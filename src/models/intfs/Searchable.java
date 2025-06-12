@@ -1,6 +1,7 @@
-package intfs;
+package models.intfs;
 
-import java.awt.print.Book;
+import models.Book;
+
 import java.util.List;
 
 public interface Searchable {
