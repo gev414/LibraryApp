@@ -1,1 +1,3 @@
-Attempt at a clean modular app.
+to do:
+try database-backed repo
+add additional sub-users
