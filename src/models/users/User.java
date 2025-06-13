@@ -2,6 +2,11 @@ package models.users;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Abstract user class that provides a base for all other roles such as Member, Admin, Librarian etc.
+ * Provides common functionality and behavior
+ */
+
 public abstract class User {
     private static final AtomicInteger idCounter = new AtomicInteger(0);
 

@@ -1,5 +1,8 @@
 package models;
 
+/** Represents a single book entity including its metadata such as ISBN, title, author, category
+ * and availability.
+ */
 public class Book {
 
     private final String isbn;
@@ -51,5 +54,9 @@ public class Book {
         this.isAvailable = available;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("[%s] %s by %s [%s]",
+                isbn, title, author, category);
+    }
 }

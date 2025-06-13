@@ -1,15 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import models.Book;
+import models.BookCategory;
+import models.InMemoryBookRepo;
+import models.InventoryService;
+import models.intfs.BookRepo;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!\n");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Dependency inversion
+        BookRepo repo = new InMemoryBookRepo();
+        //inject dependency into the service
+        InventoryService service = new InventoryService(repo);
+
+        service.addBook(new Book("978-1", "golden apple", "Third Brother", BookCategory.FICTION));
+        service.addBook(new Book("978-2", "e83 manual", "Some German", BookCategory.TECHNOLOGY));
+        service.addBook(new Book("978-3", "Macedonian History", "Bozo the Clown", BookCategory.FICTION));
+
+
+        System.out.println(" Book Titles");
+        service.printAllBookTitles();
+
+        System.out.println("\n Available Books");
+        service.listAvailableBooks().forEach(System.out::println);
+
+        System.out.println("\n Books sorted by title");
+        service.getBooksSortedByTitle().forEach(System.out::println);
+
     }
 }

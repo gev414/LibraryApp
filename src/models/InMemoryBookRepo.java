@@ -5,6 +5,10 @@ import models.intfs.BookRepo;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * In-memory book repository for initial testing. Using HashMap.
+ * To be replaced with a database repo later.
+ */
 public class InMemoryBookRepo implements BookRepo {
     private final Map<String, Book> books = new HashMap<>();
 

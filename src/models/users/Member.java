@@ -6,6 +6,11 @@ import models.intfs.Borrower;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a library member who can borrow and return books.
+ * Extends User and implements Borrower.
+ */
+
 public class Member extends User implements Borrower {
 
     private List<Book> borrowedBooks = new ArrayList<>();
