@@ -1,8 +1,8 @@
 import models.Book;
 import models.BookCategory;
-import models.InMemoryBookRepo;
-import models.InventoryService;
-import models.intfs.BookRepo;
+import repo.InMemoryBookRepo;
+import services.InventoryService;
+import repo.BookRepo;
 
 public class Main {
     public static void main(String[] args) {

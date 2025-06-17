@@ -1,4 +1,4 @@
-package models.intfs;
+package interfaces;
 
 import models.Book;
 

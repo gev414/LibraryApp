@@ -1,6 +1,6 @@
-package models;
+package repo;
 
-import models.intfs.BookRepo;
+import models.Book;
 
 import java.util.*;
 import java.util.stream.Collectors;

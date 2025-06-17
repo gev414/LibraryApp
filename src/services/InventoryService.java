@@ -1,7 +1,8 @@
-package models;
+package services;
 
-import models.intfs.BookRepo;
-import models.intfs.Searchable;
+import models.Book;
+import repo.BookRepo;
+import interfaces.Searchable;
 
 import java.util.Comparator;
 import java.util.List;

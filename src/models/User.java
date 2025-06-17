@@ -1,4 +1,4 @@
-package models.users;
+package models;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -8,10 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public abstract class User {
+    /**
+     * Thread safe ID counter.
+     */
     private static final AtomicInteger idCounter = new AtomicInteger(0);
 
     protected final int id;
-    protected String name;
+    protected final String name;
 
     public User(String name){
         this.id= idCounter.incrementAndGet();
