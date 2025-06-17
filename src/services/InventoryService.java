@@ -35,15 +35,23 @@ public class InventoryService implements Searchable {
         bookRepo.deleteByISBN(isbn);
     }
 
-    public Optional<Book> findBook(String isbn){
-        return bookRepo.findBySIBN(isbn);
+    public Optional<Book> findByIsbn(String isbn){
+        return bookRepo.findByIsbn(isbn);
     }
+
+
 
     public List<Book> listAvailableBooks() {
         return bookRepo.findAll().stream()
                 .filter(Book::isAvailable)
                 .collect(Collectors.toList());
     }
+
+    public List<Book> listUnavailableBooks(){
+        return bookRepo.findAll().stream()
+                .filter(book -> !book.isAvailable()).toList();
+    }
+
 
     public List<Book> getBooksSortedByTitle(){
         return bookRepo.findAll().stream().sorted(Comparator.comparing(Book::getTitle))

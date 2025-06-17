@@ -18,7 +18,7 @@ public class DatabaseBookRepo implements BookRepo {
     }
 
     @Override
-    public Optional<Book> findBySIBN(String isbn) {
+    public Optional<Book> findByIsbn(String isbn) {
         return Optional.empty();
     }
 

@@ -23,7 +23,7 @@ public class InMemoryBookRepo implements BookRepo {
     }
 
     @Override
-    public Optional<Book> findBySIBN(String isbn) {
+    public Optional<Book> findByIsbn(String isbn) {
         return Optional.ofNullable(books.get(isbn));
     }
 

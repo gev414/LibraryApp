@@ -13,7 +13,7 @@ public interface BookRepo {
 
     void save(Book book);
     void deleteByISBN(String isbn);
-    Optional<Book> findBySIBN(String isbn);
+    Optional<Book> findByIsbn(String isbn);
     List<Book> findByTitle(String title);
     List<Book> findAll();
 }
