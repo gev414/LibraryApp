@@ -1,4 +1,4 @@
-package models;
+package com.libraryapp.models;
 
 /** Encapsulates book data. Represents a single book entity including its metadata such as ISBN, title, author, category
  * and availability.

@@ -1,6 +1,6 @@
-package models;
+package com.libraryapp.models;
 
-import interfaces.Borrower;
+import com.libraryapp.interfaces.Borrower;
 
 import java.util.ArrayList;
 import java.util.List;

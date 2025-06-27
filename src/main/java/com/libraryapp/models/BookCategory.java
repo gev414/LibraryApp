@@ -1,4 +1,4 @@
-package models;
+package com.libraryapp.models;
 
 // Enum for allowed book categories and genres
 

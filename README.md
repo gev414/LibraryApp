@@ -1,5 +1,5 @@
 # to do:<br/>
-try database-backed repo<br/>
+try database-backed main.java.com.libraryapp.repo<br/>
 additional sub-users<br/>
 user service<br/>
 borrowing system<br/>
