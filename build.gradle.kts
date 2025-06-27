@@ -22,6 +22,7 @@ repositories {
 dependencies {
     // Add any dependencies here
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    implementation("mysql:mysql-connector-java:8.0.33")
 }
 
 tasks.test {
@@ -33,4 +34,9 @@ tasks.jar {
         attributes["Main-Class"] = "com.libraryapp.Main"
     }
 }
+
+tasks.withType<JavaExec> {
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
+}
+
 
