@@ -1,6 +1,6 @@
-package interfaces;
+package com.libraryapp.interfaces;
 
-import models.Book;
+import com.libraryapp.models.Book;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package repo;
+package com.libraryapp.repo;
 
-import models.User;
+import com.libraryapp.models.User;
 
 import java.util.*;
 

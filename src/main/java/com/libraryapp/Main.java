@@ -1,14 +1,16 @@
-import models.Book;
-import models.BookCategory;
-import models.Member;
-import models.User;
-import repo.InMemoryBookRepo;
-import repo.InMemoryUserRepo;
-import repo.UserRepo;
-import services.BorrowService;
-import services.InventoryService;
-import repo.BookRepo;
-import services.UserService;
+package com.libraryapp;
+
+import com.libraryapp.models.Book;
+import com.libraryapp.models.BookCategory;
+import com.libraryapp.models.Member;
+import com.libraryapp.models.User;
+import com.libraryapp.repo.InMemoryBookRepo;
+import com.libraryapp.repo.InMemoryUserRepo;
+import com.libraryapp.repo.UserRepo;
+import com.libraryapp.services.BorrowService;
+import com.libraryapp.services.InventoryService;
+import com.libraryapp.repo.BookRepo;
+import com.libraryapp.services.UserService;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +32,7 @@ public class Main {
 
         service.addBook(new Book("978-1", "golden apple", "Third Brother", BookCategory.FICTION));
         service.addBook(new Book("978-2", "e83 manual", "Some German", BookCategory.TECHNOLOGY));
-        service.addBook(new Book("978-3", "Macedonian Heritage Across The Milky Way", "Bozo the Clown", BookCategory.FICTION));
+        service.addBook(new Book("978-3", "Macedonian Nadenitza", "Bozo the Clown", BookCategory.FICTION));
 
 
         Book book1 = service.findByIsbn("978-1").orElseThrow();

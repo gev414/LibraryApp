@@ -1,8 +1,8 @@
-package services;
+package com.libraryapp.services;
 
-import models.Book;
-import repo.BookRepo;
-import interfaces.Searchable;
+import com.libraryapp.models.Book;
+import com.libraryapp.repo.BookRepo;
+import com.libraryapp.interfaces.Searchable;
 
 import java.util.Comparator;
 import java.util.List;

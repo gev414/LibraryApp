@@ -1,7 +1,7 @@
-package services;
+package com.libraryapp.services;
 
-import models.User;
-import repo.UserRepo;
+import com.libraryapp.models.User;
+import com.libraryapp.repo.UserRepo;
 
 import java.util.List;
 import java.util.Optional;

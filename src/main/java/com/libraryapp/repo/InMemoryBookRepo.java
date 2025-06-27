@@ -1,13 +1,13 @@
-package repo;
+package com.libraryapp.repo;
 
-import models.Book;
+import com.libraryapp.models.Book;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * In-memory book repository for initial testing. Using HashMap.
- * To be replaced with a database repo later.
+ * To be replaced with a database main.java.com.libraryapp.repo later.
  */
 public class InMemoryBookRepo implements BookRepo {
     private final Map<String, Book> books = new HashMap<>();

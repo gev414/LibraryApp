@@ -1,7 +1,7 @@
-package services;
+package com.libraryapp.services;
 
-import models.Book;
-import models.User;
+import com.libraryapp.models.Book;
+import com.libraryapp.models.User;
 
 import java.util.*;
 

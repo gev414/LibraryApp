@@ -1,4 +1,4 @@
-package models;
+package com.libraryapp.models;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
