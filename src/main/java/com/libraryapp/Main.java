@@ -20,66 +20,57 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-
+        // Setup repositories and services
         BookRepo repo = new MySQLBookRepo();
+        UserRepo userRepo = new InMemoryUserRepo(); // Swap as needed
 
-//        Disabling in-memory book repo for db testing;
-//        BookRepo repo = new InMemoryBookRepo();
-        UserRepo userRepo = new InMemoryUserRepo();
-
-        //inject dependency into the service
-
-        InventoryService service = new InventoryService(repo);
+        InventoryService inventoryService = new InventoryService(repo);
         UserService userService = new UserService(userRepo);
         BorrowService borrowService = new BorrowService();
 
-
+        // Register users
         User ivan = new Member("Ivan");
         User penka = new Member("Penka");
         userService.registerUser(ivan);
         userService.registerUser(penka);
 
-//        Disabled for database repo test
-//        service.addBook(new Book("978-1", "golden apple", "Third Brother", BookCategory.FICTION));
-//        service.addBook(new Book("978-2", "e83 manual", "Some German", BookCategory.TECHNOLOGY));
-//        service.addBook(new Book("978-3", "Macedonian Nadenitza", "Bozo the Clown", BookCategory.FICTION));
+        // Seed books
+        DemoData.populateBooks(inventoryService);
 
+        // Borrow sample books
+        inventoryService.findByIsbn("978-1").ifPresent(book -> borrowService.borrowBook(ivan, book));
+        inventoryService.findByIsbn("978-2").ifPresent(book -> borrowService.borrowBook(penka, book));
 
-        Book book1 = service.findByIsbn("978-1").orElseThrow();
-        borrowService.borrowBook(ivan, book1);
+        // Console output
+        System.out.println("Book Titles");
+        inventoryService.printAllBookTitles();
 
-        Book book2 = service.findByIsbn("978-2").orElseThrow();
-        borrowService.borrowBook(penka, book2);
+        System.out.println("\nAvailable Books");
+        inventoryService.listAvailableBooks().forEach(System.out::println);
 
+        System.out.println("\nBooks sorted by title");
+        inventoryService.getBooksSortedByTitle().forEach(System.out::println);
 
-        System.out.println(" Book Titles");
-        service.printAllBookTitles();
-
-        System.out.println("\n Available Books");
-        service.listAvailableBooks().forEach(System.out::println);
-
-        System.out.println("\n Books sorted by title");
-        service.getBooksSortedByTitle().forEach(System.out::println);
-
-        try (Connection conn = MySQLConnection.getConnection()){
-            System.out.println("\nMySQL Connection Successful");;
-        } catch (SQLException e){
+        // Test MySQL connection
+        try (Connection conn = MySQLConnection.getConnection()) {
+            System.out.println("\nMySQL Connection Successful");
+        } catch (SQLException e) {
             System.out.println("Connection failed:");
             e.printStackTrace();
         }
 
-        /**
-         * Testing output to file as console refuses to print Cyrillic characters
-         * after the addition of Gradle. Output is successfully written in Cyrillic
-         * outside the IDE console
-         */
-        List<Book> books = service.listAvailableBooks();
-        try (PrintWriter writer = new PrintWriter(new File("library_output.txt"), "UTF-8")){
-            for (Book book : books){
+        // Output available books to file (UTF-8)
+        outputBooksToFile(inventoryService.listAvailableBooks(), "library_output.txt");
+    }
+
+    // Helper method for file output
+    private static void outputBooksToFile(List<Book> books, String fileName) {
+        try (PrintWriter writer = new PrintWriter(new File(fileName), "UTF-8")) {
+            for (Book book : books) {
                 writer.println(book.getTitle());
             }
             System.out.println("Done printing to file");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
