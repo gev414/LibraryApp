@@ -20,11 +20,11 @@ public class BorrowService {
         System.out.println(user.getName() + " borrowed: " + book);
         return true;
     }
-
+    // return the list associated with the user key, if no is present - returns an empty list to avoid null pointers.
     public List<Book> getBorrowedBooks(User user){
         return borrowedBooks.getOrDefault(user.getId(), Collections.emptyList());
     }
-
+    // get user books, if book exists - remove it and mark book as available and return true.
     public boolean returnBook(User user, Book book){
         List<Book> books = borrowedBooks.get(user.getId());
 
