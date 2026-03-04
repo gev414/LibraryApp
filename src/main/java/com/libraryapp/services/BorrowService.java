@@ -7,7 +7,7 @@ import java.util.*;
 
 public class BorrowService {
     private final Map<Integer, List<Book>> borrowedBooks = new HashMap<>();
-
+    // checks book availability -> registers the book as borrowed by user -> sets book availability to false -> return result
     public boolean borrowBook(User user, Book book){
         if(!book.isAvailable()){
             System.out.println("Book is not available: " + book.getTitle());
